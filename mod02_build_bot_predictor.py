@@ -18,5 +18,7 @@ def train_model(X, y, seed=seed):
         min_samples_leaf=1,
         random_state=seed
     )
+    #where model finds patterns in X, or the training file
+    #that are then used to test the files in Y
     model.fit(X, y)
     return model
