@@ -1,0 +1,3 @@
+1. The inteneded users of my code and data is myself and the professor. /
+2. If the code/data fell into the wrong hands, I do not think there would be immediated security risks. There is data under the mod06_data folder which contains names, age, zip, and gender, but is probably fake data and even if it was connected to real people, gender/zip/age can be found easily from a google search, so it is not really private. / 
+3. I do not think it is necessary for a CODEOWNERS file, rulesets for pull requests, etc because the only thing that it would be preventing is someone stealing my work as using it as their own. The data and code being leaking would not result in a security risk.
