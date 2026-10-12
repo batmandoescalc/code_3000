@@ -28,7 +28,7 @@ def link_records(anon_df, aux_df):
     counts = merged.groupby("anon_id")["name"].transform("size")
     unique = merged[counts == 1]
 
-    return(unique)
+    return(unique.rename(columns={"name": "matched_name"}).reset_index(drop=True))
         
     #raise NotImplementedError
 
