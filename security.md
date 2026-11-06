@@ -1,0 +1,2 @@
+The only intended users of the data and code contained inside of this repository are me and my professor Matt. If the data inside of this repository was to fall into the hands of an malicious user, it could risk the integrity of my work in this class (CSE-3000), supply an unintended user with information on this class, and/or make completion of further assignments impossible. In preparation for this security risk I have included a Git ruleset for pull requests.
+

@@ -18,7 +18,19 @@ def link_records(anon_df, aux_df):
       anon_id, matched_name
     containing ONLY uniquely matched records.
     """
-    raise NotImplementedError
+
+    quasi_identifiers = [c for c in anon_df.columns if c in aux_df.columns and c not in ("anon_id", "name")]
+    if not quasi_identifiers:
+        raise ValueError("No shared quasi-identifier columns found.")
+
+    merged = anon_df.merge(aux_df, on=quasi_identifiers, how="inner")
+
+    counts = merged.groupby("anon_id")["name"].transform("size")
+    unique = merged[counts == 1]
+
+    return(unique.rename(columns={"name": "matched_name"}).reset_index(drop=True))
+        
+    #raise NotImplementedError
 
 
 def deanonymization_rate(matches_df, anon_df):
@@ -26,4 +38,7 @@ def deanonymization_rate(matches_df, anon_df):
     Compute the fraction of anonymized records
     that were uniquely re-identified.
     """
-    raise NotImplementedError
+    if len(anon_df) == 0:
+        return 0.0
+    return matches_df["anon_id"].nunique() / len(anon_df)
+    #raise NotImplementedError
